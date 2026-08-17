@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="16" fill="#11110f"/>
+  <text x="10" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="32" fill="#f4f3ef" letter-spacing="-1.5">TK</text>
+  <circle cx="53" cy="41" r="4.5" fill="#2f5bff"/>
+</svg>

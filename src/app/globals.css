@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4f3ef;
+  --white: #ffffff;
+  --ink: #11110f;
+  --ink-soft: #3f3f3a;
+  --muted: #696962;
+  --muted-light: #bcbcb5;
+  --line: rgba(17, 17, 15, 0.14);
+  --line-dark: rgba(255, 255, 255, 0.2);
+  --blue: #2f5bff;
+  --blue-light: #eef1ff;
+  --lime: #d9ff57;
+  --radius: 16px;
+  --shell: min(1320px, calc(100vw - 48px));
+}
+
+@theme {
+  --color-paper: #f4f3ef;
+  --color-ink: #11110f;
+  --color-ink-soft: #3f3f3a;
+  --color-muted: #696962;
+  --color-cobalt: #2f5bff;
+  --color-lime-accent: #d9ff57;
+  --font-sans: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-serif), Georgia, Cambria, serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d3cc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a1;
+}
+
+/* Shell container */
+.page-shell {
+  width: min(1320px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: calc(100% - 32px);
+  }
+}
+
+/* Inverted Dark Section Styles */
+.section-dark {
+  background-color: var(--ink);
+  color: #f4f3ef;
+}
+
+.section-dark ::selection {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.section-dark a:hover {
+  color: var(--lime);
+}
+
+/* Clean Editorial Lines & Borders */
+.border-line {
+  border-color: var(--line);
+}
+
+.border-line-dark {
+  border-color: var(--line-dark);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.section-dark :focus-visible {
+  outline-color: var(--lime);
+}
