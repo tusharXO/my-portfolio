@@ -14,14 +14,14 @@ export default function Projects() {
             Featured Engineering
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#11110f]">
-            Flagship systems &amp; architectures.
+            Backend systems &amp; architectures.
           </h2>
         </div>
 
         {/* Project List */}
-        <div className="space-y-12">
-          {FEATURED_PROJECTS.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+        <div className="space-y-10">
+          {FEATURED_PROJECTS.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
       </div>

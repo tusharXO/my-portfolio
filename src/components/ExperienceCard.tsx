@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ChevronDown, ArrowUpRight } from "lucide-react";
+import { CheckCircle2, ChevronDown } from "lucide-react";
 import { ExperienceItem } from "@/data/portfolioData";
 import { cn } from "@/lib/utils";
 
@@ -42,7 +42,7 @@ export default function ExperienceCard({
           </p>
         </div>
 
-        {/* Right Column: Title, Company Link, Summary, and Expandable Content */}
+        {/* Right Column: Title, Company Name (Normal Text), Summary, and Expandable Content */}
         <div className="md:col-span-9">
           <div className="flex items-start justify-between gap-4">
             <div>
@@ -56,17 +56,16 @@ export default function ExperienceCard({
               </h3>
 
               <div className="mb-4">
-                <span
+                <p
                   className={cn(
-                    "text-sm sm:text-base font-semibold inline-flex items-center gap-1 hover:underline",
+                    "text-sm sm:text-base font-semibold",
                     isLatest
                       ? "text-[#d9ff57]"
                       : "text-[#2f5bff]"
                   )}
                 >
-                  <span>{experience.company} · {experience.location}</span>
-                  <span className="text-xs">↗</span>
-                </span>
+                  {experience.company} – {experience.location}
+                </p>
               </div>
 
               {/* 1-Sentence Summary */}

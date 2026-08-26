@@ -26,21 +26,22 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tushar Kumar | Full-Stack & Systems Developer",
+  title: "Tushar Kumar | Backend Developer & Distributed Systems",
   description:
-    "Portfolio of Tushar Kumar — Architecting scalable backend pipelines, real-time distributed systems (WebSockets/WebRTC), and intuitive web dashboards.",
+    "Portfolio of Tushar Kumar — Backend Developer with hands-on experience architecting low-latency microservices, monorepo codebases, and distributed systems using Node.js, Java (Spring Boot), and TypeScript.",
   keywords: [
     "Tushar Kumar",
-    "Full-Stack Developer",
+    "Backend Developer",
     "Software Engineer",
-    "Systems Engineer",
-    "WebRTC",
-    "WebSockets",
+    "Java",
+    "Spring Boot",
     "Node.js",
     "TypeScript",
-    "React",
-    "Next.js",
+    "Microservices",
+    "Distributed Systems",
     "PostgreSQL",
+    "MySQL",
+    "MongoDB",
     "Redis",
     "Docker",
     "AWS",
@@ -51,16 +52,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://github.com/tusharXO",
-    title: "Tushar Kumar | Full-Stack & Systems Developer",
+    title: "Tushar Kumar | Backend Developer & Distributed Systems",
     description:
-      "Architecting scalable backend pipelines, real-time distributed protocols, and intuitive web dashboards.",
+      "Backend Developer with hands-on experience architecting low-latency microservices, monorepo codebases, and distributed systems using Node.js, Java (Spring Boot), and TypeScript.",
     siteName: "Tushar Kumar Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tushar Kumar | Full-Stack & Systems Developer",
+    title: "Tushar Kumar | Backend Developer & Distributed Systems",
     description:
-      "Architecting scalable backend pipelines, real-time distributed protocols, and intuitive web dashboards.",
+      "Backend Developer with hands-on experience architecting low-latency microservices, monorepo codebases, and distributed systems using Node.js, Java (Spring Boot), and TypeScript.",
   },
   icons: {
     icon: [

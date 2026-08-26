@@ -42,14 +42,8 @@ export interface ProjectItem {
   description: string;
   detailedPoints: string[];
   techStack: string[];
-  metrics: { label: string; value: string }[];
   githubUrl: string;
   demoUrl?: string;
-  hasArchitectureDiagram: boolean;
-  architectureHighlights: {
-    title: string;
-    description: string;
-  }[];
 }
 
 export interface SkillCategory {
@@ -65,24 +59,24 @@ export interface SkillCategory {
 
 export const PERSONAL_INFO = {
   name: "Tushar Kumar",
-  role: "Software Developer | Full-Stack & Systems Engineer",
-  availabilityStatus: "Available for Full-Time SWE Roles (Open to Relocation)",
+  role: "Backend Developer | Microservices & Distributed Systems",
+  availabilityStatus: "Available for Full-Time Backend / SWE Roles (Open to Relocation)",
   location: "New Delhi, India (Open to relocation)",
   email: "iamtushar2004@gmail.com",
   phone: "(+91) 7011106209",
   github: "https://github.com/tusharXO",
   linkedin: "https://www.linkedin.com/in/tusharkumarx/",
-  bio: "Results-oriented Software Developer with a passion for creating innovative solutions, cloud-hosted infrastructure, and real-time systems using JavaScript, React, Node.js, and SQL databases.",
+  bio: "Backend Developer with hands-on experience architecting low-latency microservices, monorepo codebases, and distributed systems using Node.js, Java (Spring Boot), and TypeScript. Experienced in implementing ACID-compliant transactional ledgers, atomic order pipelines, and containerized cloud deployments on AWS.",
   fullBio:
-    "Results-oriented Software Developer with a passion for creating innovative solutions, cloud-hosted infrastructure, and real-time systems using JavaScript, React, Node.js, and SQL databases. Proven track record in startup environments creating intuitive user dashboards, optimizing data workflows, and deploying resilient applications on AWS (EC2). Driven to apply analytical skills to develop efficient, data-driven applications.",
+    "Backend Developer with hands-on experience architecting low-latency microservices, monorepo codebases, and distributed systems using Node.js, Java (Spring Boot), and TypeScript. Experienced in implementing ACID-compliant transactional ledgers, atomic order pipelines, and containerized cloud deployments on AWS.",
   resumeUrl: "/Tushar_Kumar_Resume.pdf",
 };
 
 export const METRIC_HIGHLIGHTS: MetricItem[] = [
   {
     id: "payment-throughput",
-    value: "1,000+",
-    label: "Daily Payin / Payout Transactions",
+    value: "20+ TPS",
+    label: "Concurrent Payment Transactions Processed",
     sublabel: "Processed with AES-256 encryption, RSA signatures, and idempotent webhook listeners",
     source: "TruesTech IT Solution",
     iconName: "CreditCard",
@@ -129,21 +123,19 @@ export const EXPERIENCES: ExperienceItem[] = [
     period: "12/2025 – Present",
     location: "Gurugram, Haryana",
     type: "Internship",
-    highlightTag: "High-Throughput FinTech Engine",
+    highlightTag: "FinTech Payment Pipelines & Security",
     description:
-      "Architecting core payment processing pipelines, hybrid database ledger persistence, and cryptographic security across cloud infrastructure.",
+      "Scaling core payment processing pipelines, ACID-compliant ledger persistence, and cryptographic security across cloud infrastructure.",
     achievements: [
-      "Engineered High-Throughput Payment Engine: Architected core payment processing pipelines handling 1,000+ daily payin/payout transactions, integrating multi-rail payment gateways with idempotent webhook listeners to ensure zero double-spend or transaction dropping during peak traffic spikes.",
-      "Designed Hybrid Persistence Architecture: Structured ACID-compliant MySQL schemas with strict isolation levels and row-level locking for wallet ledger balances, paired with MongoDB for asynchronous event-driven audit logging, enabling low-overhead query traces across financial workflows.",
-      "Hardened Multi-Layer Security & Cryptography: Implemented fine-grained OTP authentication with rate-limiting and encrypted sensitive payloads end-to-end using AES-256/RSA cryptography across all REST endpoints to mitigate MITM attacks and comply with financial security standards.",
-      "Built Dynamic Role-Based Multi-Dashboard Suite: Developed RBAC-enforced administrative and end-user dashboards featuring contextual UI layouts, dynamic permission gating, and granular transaction access controls across distinct user tiers.",
-      "Automated Financial Reporting & Reconciliation Engine: Built an asynchronous batch reporting worker generating downloadable, audit-ready financial summaries (PDF/CSV/Excel) for admins and account-level reconciliation statements for end-users without blocking primary API threads.",
-      "Deployed AI-Driven Proactive Telegram Alerting: Integrated a real-time Telegram monitoring bot backed by automated error pattern detection to flag unauthorized access attempts, transaction failures, and server anomalies, reducing Mean Time to Resolution (MTTR) to <5 minutes.",
-      "Optimized Infrastructure & Process Load Balancing: Deployed node microservices via PM2 Cluster Mode on cloud instances, utilizing IPC process coordination and memory management to achieve continuous sub-20ms API response latency and maximum CPU core utilization.",
+      "Scaled core payment processing pipelines handling consistent 20+ transactions per second (TPS) across multi-rail gateways, integrating idempotent webhook listeners to eliminate double-spend and dropped events under high-concurrency conditions.",
+      "Structured ACID-compliant MySQL schemas with row-level locking for wallet ledger balances, combined with MongoDB for asynchronous audit logging and AES-256/RSA payload encryption with rate-limited OTP auth across all REST endpoints.",
+      "Architected RBAC-enforced administrative and user dashboards with contextual UI layouts, granular transaction permissions, and an asynchronous batch reporting worker generating audit-ready PDF/CSV/Excel summaries without blocking primary API threads.",
+      "Integrated an AI-driven Telegram monitoring bot backed by automated error pattern detection to flag unauthorized access, server anomalies, and transaction failures, reducing MTTR to <5 minutes.",
+      "Deployed Node microservices via PM2 Cluster Mode on cloud instances, utilizing IPC process coordination and memory management to achieve continuous sub-20ms API response latency and maximum CPU core utilization.",
     ],
     techStack: [
       "Node.js",
-      "Express.js",
+      "Express",
       "MySQL",
       "MongoDB",
       "Redis",
@@ -151,27 +143,25 @@ export const EXPERIENCES: ExperienceItem[] = [
       "PM2",
       "AWS",
       "Webhooks",
-      "AES-256 / RSA Cryptography",
+      "Cryptography (AES-256 / RSA)",
       "Telegram Bot API",
     ],
-    metrics: "1,000+ daily transactions, <5 min MTTR, sub-20ms API response",
+    metrics: "20+ TPS, <5 min MTTR, sub-20ms API latency",
   },
   {
     id: "airfleet",
     company: "AirFleet Managers",
-    role: "Web Developer Intern",
+    role: "Backend Developer Intern",
     period: "02/2025 – 08/2025",
     location: "Gurugram, Haryana",
     type: "Internship",
-    highlightTag: "Aviation Asset Management & Real-Time Comms",
+    highlightTag: "Aviation Asset Portal & Reporting Engine",
     description:
-      "Built enterprise aviation fleet management portal with multi-tenant data isolation, real-time messaging, and high-density automated export engines.",
+      "Designed aviation asset management portal with multi-tenant data isolation, real-time messaging, and high-performance export engines.",
     achievements: [
-      "Designed an Aviation Asset Management Portal with granular Role-Based Access Control (RBAC), enforcing multi-tenant data isolation and dynamic dashboard permission models across Airlines, Lessors, and MROs.",
-      "Engineered a low-latency messaging infrastructure supporting direct and group channels for instant cross-organization communications, eliminating reliance on external messaging tools.",
-      "Implemented automated report generation engine capable of rendering production-ready, stakeholder-grade PDFs, PPTs, and Excel sheets with embedded analytical charts, optimizing rendering pipelines to keep file sizes under 10MB even for multi-page datasets.",
-      "Developed interactive real-time data visualizers and dynamic Gantt charts to track project milestones, utilizing live data feeds and client-side role filtering to restrict internal progress views to staff while keeping external stakeholder dashboards clean.",
-      "Containerized Redis and core microservices via Docker, standardizing multi-environment CI/CD deployments and trimming base image sizes down to <250MB.",
+      "Designed an Aviation Asset Management Portal with multi-tenant data isolation and granular RBAC permission models, integrating low-latency direct and group messaging infrastructure for instant cross-organization communication.",
+      "Authored an automated reporting engine rendering analytical PDFs, PPTs, and Excel sheets with embedded charts (keeping file sizes <10MB), alongside interactive real-time data visualizers and Gantt charts with client-side role filtering.",
+      "Containerized Redis and core microservices via Docker, standardizing multi-environment CI/CD deployment pipelines and trimming base image sizes down to <250MB.",
       "Configured PM2 cluster mode across multi-core AWS EC2 instances, establishing request load balancing and process management to maintain sub-15ms response times and high system availability.",
     ],
     techStack: [
@@ -186,7 +176,7 @@ export const EXPERIENCES: ExperienceItem[] = [
       "Docker",
       "Redis",
     ],
-    metrics: "Sub-15ms latency, <10MB export engine, <250MB container images",
+    metrics: "Sub-15ms response latency, <10MB export engine, <250MB container images",
   },
   {
     id: "sanrachna",
@@ -195,14 +185,13 @@ export const EXPERIENCES: ExperienceItem[] = [
     period: "06/2024 – 07/2024",
     location: "South West Delhi, Delhi",
     type: "Internship",
-    highlightTag: "Digital Publication & Gamified UX",
+    highlightTag: "Publication Platform & Distribution Pipelines",
     description:
-      "Re-engineered high-traffic digital publication platform, dynamic automated content categorization pipelines, and gamified visual storytelling.",
+      "Redesigned high-traffic publication portal, automated content distribution pipelines, and centralized editorial workflows.",
     achievements: [
-      "Redesigned a publication portal that boosted user engagement by 30%, reaching over 10,000 monthly active users.",
-      "Automated content distribution pipelines by implementing dynamic categorization and integrated newsletter workflows, reducing manual efforts by 50%.",
-      "Developed a centralized planning tool, reducing editorial turnaround by 35%.",
-      "Created a gamified web experience that transformed abstract psychological topics into accessible visual narratives, raising engagement duration by 40%.",
+      "Redesigned a high-traffic publication portal that boosted user engagement by 30% for 10,000+ monthly active users, creating gamified visual narratives that raised engagement duration by 40%.",
+      "Automated content distribution pipelines with dynamic categorization and newsletter integrations, cutting manual publishing efforts by 50%.",
+      "Spearheaded a centralized planning and editorial workflow tool that reduced publication turnaround times by 35%.",
     ],
     techStack: [
       "React",
@@ -223,7 +212,7 @@ export const EDUCATION_LIST: EducationItem[] = [
     degree: "Master of Computer Applications (MCA)",
     institution: "SGT University",
     location: "Gurugram, HR",
-    period: "08/2025 – Present",
+    period: "08/2025 – 08/2027",
     status: "Available for full-time job",
     badgeText: "Pursuing • Available Full-Time",
   },
@@ -245,19 +234,46 @@ export const SPOKEN_LANGUAGES = [
 
 export const FEATURED_PROJECTS: ProjectItem[] = [
   {
+    id: "creatorstore",
+    title: "CreatorStore",
+    tagline: "Enterprise E-Commerce & Order Processing API",
+    category: "Enterprise Backend & Distributed APIs",
+    featured: true,
+    description:
+      "A multi-tiered e-commerce backend built with Spring Boot 3 and Java 21, featuring atomic transactional checkout pipelines, JPA/Hibernate PostgreSQL modeling, and automated JUnit 5 test suites.",
+    detailedPoints: [
+      "Architected a multi-tiered e-commerce backend in Spring Boot 3 using constructor-based dependency injection, centralized exception handling (@RestControllerAdvice), and structured DTO request/response mapping.",
+      "Implemented atomic transactional checkout pipelines (@Transactional) with real-time stock validation, automated inventory deduction, and server-side price calculations to prevent order race conditions.",
+      "Structured relational JPA/Hibernate data models with PostgreSQL, indexing product categories and keyword searches for efficient catalog querying.",
+      "Integrated interactive OpenAPI 3 (Swagger UI) documentation and built automated test suites with JUnit 5 and H2 in-memory databases.",
+    ],
+    techStack: [
+      "Java 21",
+      "Spring Boot 3",
+      "Spring Data JPA",
+      "Hibernate",
+      "PostgreSQL",
+      "Maven",
+      "Swagger/OpenAPI",
+      "JUnit 5",
+    ],
+    githubUrl: "https://github.com/tusharXO",
+    demoUrl: "https://github.com/tusharXO",
+  },
+  {
     id: "nexus-rtc",
     title: "NEXUS RTC",
     tagline: "Cross-Platform Enterprise Desktop Collaboration Suite",
     category: "Real-Time Systems & Desktop Engineering",
     featured: true,
     description:
-      "A high-performance desktop collaboration suite built with Electron, React, and TypeScript, delivering low-latency peer-to-peer real-time video, audio, and desktop screen sharing with a high-throughput WebSockets signaling cluster.",
+      "A cross-platform desktop application delivering low-latency peer-to-peer real-time video, audio, and desktop screen sharing with a high-throughput WebSockets signaling cluster.",
     detailedPoints: [
       "Engineered a cross-platform desktop application using Electron, React, and TypeScript, delivering low-latency peer-to-peer real-time video, audio, and desktop screen sharing.",
-      "Developed a high-performance signaling server using Node.js, Express, and WebSockets, optimizing WebRTC communication by handling 10,000+ daily SDP and ICE candidate transmissions.",
-      "Integrated native OS screen-sharing capabilities using Electron's desktopCapturer API and IPC contextBridge communication for dynamic source selection with real-time frame previews.",
+      "Developed a high-performance signaling server using Node.js, Express, and WebSockets to broker SDP Offer/Answer handshakes and ICE candidate gathering.",
+      "Integrated native OS screen-sharing capabilities using Electron's desktopCapturer API and IPC contextBridge communication with real-time frame previews.",
       "Built real-time media controls enabling dynamic track enabling/disabling for microphone muting and camera toggles without tearing down peer connections.",
-      "Containerized backend services with multi-stage Docker builds on Linux base images, ensuring predictable deployment environments and seamless network port exposure.",
+      "Containerized backend services with multi-stage Docker builds on Linux base images for predictable network port exposures and lightweight deployments.",
     ],
     techStack: [
       "TypeScript",
@@ -268,39 +284,9 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
       "WebSockets",
       "WebRTC",
       "Docker",
-      "Tailwind CSS",
-    ],
-    metrics: [
-      { label: "Daily Transmissions", value: "10,000+ SDP/ICE" },
-      { label: "Screen Capture", value: "Native OS API" },
-      { label: "Signaling Server", value: "Node + WebSockets" },
-      { label: "Packaging", value: "Multi-stage Docker" },
     ],
     githubUrl: "https://github.com/tusharXO",
     demoUrl: "https://github.com/tusharXO",
-    hasArchitectureDiagram: true,
-    architectureHighlights: [
-      {
-        title: "1. WebSockets Signaling & Session Negotiation",
-        description:
-          "Node.js & Express WebSocket signaling cluster handles secure peer handshakes, room orchestration, and 10,000+ daily SDP Offer/Answer exchanges.",
-      },
-      {
-        title: "2. P2P WebRTC Mesh & ICE Traversal",
-        description:
-          "STUN/TURN candidate gathering establishes direct peer-to-peer UDP channels with dynamic candidate pairing for low-latency transmission.",
-      },
-      {
-        title: "3. Electron Desktop Capture & IPC Bridge",
-        description:
-          "Native screen capture via Electron desktopCapturer API and secure contextBridge communication for dynamic source selection and real-time previews.",
-      },
-      {
-        title: "4. Real-Time Media Controls & Docker Deployments",
-        description:
-          "Dynamic audio/video track toggling without tearing down sessions, packaged via multi-stage Docker builds on optimized Linux base images.",
-      },
-    ],
   },
 ];
 
@@ -309,7 +295,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     category: "Languages",
     description: "Core programming and scripting languages for systems & applications",
     skills: [
-      { name: "JavaScript (ES6+)", highlight: true },
+      { name: "Java (Java 21)", highlight: true },
+      { name: "JavaScript", highlight: true },
       { name: "TypeScript", highlight: true },
       { name: "Python", highlight: false },
       { name: "Go", highlight: false },
@@ -319,23 +306,23 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
   {
     category: "Frameworks & Libraries",
-    description: "Frontend & backend frameworks and modern application libraries",
+    description: "Backend architectures, enterprise frameworks, and client-side tooling",
     skills: [
-      { name: "React.js", highlight: true },
-      { name: "Redux / Context API", highlight: false },
+      { name: "Spring Boot 3", highlight: true },
+      { name: "Hibernate / JPA", highlight: true },
       { name: "Node.js", highlight: true },
+      { name: "NestJS", highlight: true },
       { name: "Express.js", highlight: true },
-      { name: "TypeScript", highlight: true },
+      { name: "React.js", highlight: true },
+      { name: "React Native", highlight: false },
+      { name: "Redux / Context API", highlight: false },
       { name: "Jest / Unit Testing", highlight: false },
       { name: "Tailwind CSS", highlight: true },
-      { name: "Next.js", highlight: true },
-      { name: "Electron", highlight: true },
-      { name: "Framer Motion", highlight: false },
     ],
   },
   {
     category: "Databases & Caching",
-    description: "ACID transactional databases, NoSQL engines, and in-memory caches",
+    description: "ACID transactional relational databases, NoSQL engines, and caches",
     skills: [
       { name: "PostgreSQL", highlight: true },
       { name: "MySQL (ACID / Row-Locking)", highlight: true },
@@ -358,16 +345,16 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
   {
     category: "Core Concepts & Architecture",
-    description: "Distributed architectures, communication protocols, and security",
+    description: "Distributed architectures, communication protocols, and engineering practices",
     skills: [
       { name: "REST APIs", highlight: true },
       { name: "Database Design", highlight: true },
       { name: "System Monitoring", highlight: true },
-      { name: "WebSockets", highlight: true },
-      { name: "WebRTC", highlight: true },
+      { name: "Agile & Scrum", highlight: false },
+      { name: "CI/CD Pipelines", highlight: true },
+      { name: "Test-Driven Development", highlight: false },
+      { name: "GitFlow", highlight: false },
       { name: "Cryptography (AES-256 / RSA)", highlight: true },
-      { name: "Webhooks (Idempotent)", highlight: true },
-      { name: "Role-Based Access Control (RBAC)", highlight: true },
     ],
   },
 ];

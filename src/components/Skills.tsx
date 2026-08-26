@@ -15,7 +15,7 @@ export default function Skills() {
             Technical Capabilities
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#11110f]">
-            Full-stack depth &amp; systems engineering.
+            Backend engineering &amp; distributed systems.
           </h2>
         </div>
 
@@ -54,8 +54,8 @@ export default function Skills() {
 
         {/* Footnote notes */}
         <div className="p-6 rounded-2xl bg-white border border-[#11110f]/10 text-xs sm:text-sm text-[#55554e] font-mono leading-relaxed">
-          <strong className="text-[#11110f] font-bold">Additional Specializations:</strong>{" "}
-          Idempotent payment webhook dispatching, multi-rail gateway integration, ACID MySQL schemas with row-level locking, automated batch financial reconciliation workers (PDF/CSV/Excel), AI-driven Telegram monitoring bots, Electron desktopCapturer API, IPC contextBridge protocols, and PM2 Cluster Mode process management on multi-core AWS EC2 instances.
+          <strong className="text-[#11110f] font-bold">Specialized Engineering Practices:</strong>{" "}
+          Idempotent payment webhook dispatching, multi-rail gateway integration, ACID MySQL schemas with row-level locking, automated transactional checkout pipelines (@Transactional), Swagger/OpenAPI documentation, PM2 Cluster Mode process management, and containerized Docker CI/CD deployments on AWS EC2.
         </div>
       </div>
     </section>

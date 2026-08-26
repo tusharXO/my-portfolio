@@ -11,6 +11,7 @@ import {
   Send,
   MessageSquare,
   ArrowUp,
+  Loader2,
 } from "lucide-react";
 import { Github, Linkedin } from "@/components/icons";
 import confetti from "canvas-confetti";
@@ -20,8 +21,14 @@ import { useToast } from "@/components/Toast";
 export default function ContactSection() {
   const [emailCopied, setEmailCopied] = useState(false);
   const [phoneCopied, setPhoneCopied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    honeypot: "",
+  });
   const { showToast } = useToast();
 
   const handleCopyEmail = async () => {
@@ -37,7 +44,7 @@ export default function ContactSection() {
           origin: { y: 0.8 },
           colors: ["#d9ff57", "#2f5bff", "#ffffff"],
         });
-      } catch { }
+      } catch {}
 
       setTimeout(() => setEmailCopied(false), 2500);
     } catch {
@@ -64,19 +71,57 @@ export default function ContactSection() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
+    if (isSubmitting) return;
 
-    const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=Project%20Enquiry%20from%20${encodeURIComponent(
-      formData.name
-    )}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`;
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    window.location.href = mailtoUrl;
-    setFormSubmitted(true);
-    showToast("Opening email client...", "Ready to send message", "info");
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setFormData({ name: "", email: "", message: "", honeypot: "" });
+        setFormSubmitted(true);
+        showToast(
+          "Message Sent!",
+          "Thank you! A confirmation has been sent to your email.",
+          "success"
+        );
+
+        try {
+          confetti({
+            particleCount: 50,
+            spread: 70,
+            origin: { y: 0.8 },
+            colors: ["#d9ff57", "#2f5bff", "#ffffff"],
+          });
+        } catch {}
+      } else {
+        showToast(
+          "Failed to Send",
+          data.error || "Please check your details or try again later.",
+          "error"
+        );
+      }
+    } catch {
+      showToast(
+        "Network Error",
+        "Unable to connect. Please try again or email directly: " +
+          PERSONAL_INFO.email,
+        "error"
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToTop = () => {
@@ -148,7 +193,7 @@ export default function ContactSection() {
               </a>
               <button
                 onClick={handleCopyEmail}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-mono text-white transition-all active:scale-95 shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-mono text-white transition-all active:scale-95 shrink-0 cursor-pointer"
               >
                 {emailCopied ? (
                   <>
@@ -178,7 +223,7 @@ export default function ContactSection() {
               </a>
               <button
                 onClick={handleCopyPhone}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-mono text-white transition-all active:scale-95 shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-mono text-white transition-all active:scale-95 shrink-0 cursor-pointer"
               >
                 {phoneCopied ? (
                   <>
@@ -245,10 +290,24 @@ export default function ContactSection() {
               <span>Send a Direct Message</span>
             </h3>
             <p className="text-xs text-[#8f8f89] mb-6">
-              Submitting opens a pre-composed message in your default email client.
+              Delivered directly to my inbox with an automated receipt confirmation.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Hidden honeypot field for bot trap */}
+              <input
+                type="text"
+                name="honeypot"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.honeypot}
+                onChange={(e) =>
+                  setFormData({ ...formData, honeypot: e.target.value })
+                }
+                className="hidden"
+                aria-hidden="true"
+              />
+
               <div>
                 <label className="block text-xs font-mono text-[#bcbcb5] mb-1.5">
                   Your Name
@@ -261,7 +320,8 @@ export default function ContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-[#55554e] text-sm focus:outline-none focus:border-[#d9ff57] transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-[#55554e] text-sm focus:outline-none focus:border-[#d9ff57] transition-colors disabled:opacity-60"
                 />
               </div>
 
@@ -277,7 +337,8 @@ export default function ContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-[#55554e] text-sm focus:outline-none focus:border-[#d9ff57] transition-colors"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-[#55554e] text-sm focus:outline-none focus:border-[#d9ff57] transition-colors disabled:opacity-60"
                 />
               </div>
 
@@ -293,16 +354,27 @@ export default function ContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-[#55554e] text-sm focus:outline-none focus:border-[#d9ff57] transition-colors resize-none"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-[#55554e] text-sm focus:outline-none focus:border-[#d9ff57] transition-colors resize-none disabled:opacity-60"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl bg-[#d9ff57] text-[#11110f] font-bold text-sm hover:bg-[#e4ff85] transition-colors flex items-center justify-center gap-2 active:scale-98 shadow-sm"
+                disabled={isSubmitting}
+                className="w-full py-3 rounded-xl bg-[#d9ff57] text-[#11110f] font-bold text-sm hover:bg-[#e4ff85] transition-colors flex items-center justify-center gap-2 active:scale-98 shadow-sm disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
               >
-                <Send className="w-4 h-4" />
-                <span>Start Conversation</span>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Sending Message...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    <span>Start Conversation</span>
+                  </>
+                )}
               </button>
             </form>
           </div>
@@ -319,7 +391,7 @@ export default function ContactSection() {
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-white hover:text-[#d9ff57] transition-colors"
+            className="flex items-center gap-1.5 text-white hover:text-[#d9ff57] transition-colors cursor-pointer"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />

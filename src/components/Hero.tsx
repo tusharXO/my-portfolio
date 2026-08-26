@@ -2,18 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  Copy,
-  Check,
-  ArrowDown,
-  Clock,
-  MapPin,
-  Sparkles,
-  Layers,
-  Cpu,
-  Radio,
-  CreditCard,
-} from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import confetti from "canvas-confetti";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import { useToast } from "@/components/Toast";
@@ -59,7 +48,7 @@ export default function Hero() {
           origin: { y: 0.7 },
           colors: ["#2f5bff", "#11110f", "#d9ff57"],
         });
-      } catch {}
+      } catch { }
 
       setTimeout(() => setCopied(false), 2500);
     } catch {
@@ -82,27 +71,16 @@ export default function Hero() {
   return (
     <section id="hero" className="pt-32 pb-16 sm:pb-24 border-b border-[#11110f]/10">
       <div className="page-shell">
-        {/* Eyebrow */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-xs sm:text-sm font-mono tracking-wide text-[#696962] uppercase mb-6 flex items-center gap-2"
-        >
-          <span className="inline-block w-2 h-2 rounded-full bg-[#2f5bff]" />
-          Full-Stack & Systems Developer · Real-Time Architecture
-        </motion.p>
-
         {/* Large Display Title */}
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] font-bold tracking-tight text-[#11110f] leading-[1.05] sm:leading-[1.02] mb-10 max-w-5xl"
+          transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold tracking-tight text-[#11110f] leading-[1.05] sm:leading-[1.02] mb-10 max-w-5xl"
         >
-          I architect scalable backend pipelines{" "}
+          I architect low-latency microservices{" "}
           <span className="font-serif italic font-normal text-[#3f3f3a]">
-            and build resilient real-time systems.
+            and build resilient distributed systems.
           </span>
         </motion.h1>
 
@@ -110,12 +88,12 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-10 items-start mb-16 pt-8 border-t border-[#11110f]/10"
         >
           <div className="md:col-span-8">
             <p className="text-lg sm:text-xl text-[#3f3f3a] leading-relaxed">
-              I’m <strong className="text-[#11110f] font-bold">{PERSONAL_INFO.name}</strong>. I specialize in high-throughput transaction engines, sub-millisecond distributed protocols (WebSockets & WebRTC), and modern data workflows across JavaScript, React, Node.js, SQL, and AWS infrastructure.
+              I’m <strong className="text-[#11110f] font-bold">{PERSONAL_INFO.name}</strong>. {PERSONAL_INFO.bio}
             </p>
           </div>
 
@@ -150,66 +128,57 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Live Status Banner Card */}
+        {/* Editorial Metadata Rail (Non-Card Layout) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="p-6 sm:p-8 rounded-2xl bg-white border border-[#11110f]/12 shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-6 items-center"
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="pt-10 border-t border-[#11110f]/10 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start"
         >
-          {/* Status 1: Current Employment */}
-          <div className="flex items-start gap-3.5">
-            <div className="p-2.5 rounded-xl bg-[#2f5bff]/10 text-[#2f5bff] shrink-0 mt-0.5">
-              <CreditCard className="w-4 h-4" />
+          {/* Item 01: Current Role */}
+          <div className="md:col-span-4">
+            <div className="text-[11px] font-mono tracking-wider uppercase text-[#696962] mb-2 flex items-center gap-2">
+              <span className="text-[#2f5bff] font-bold">01</span>
+              <span className="opacity-40">/</span>
+              <span>Current Engagement</span>
             </div>
-            <div>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#696962] block mb-0.5">
-                Current Role
-              </span>
-              <h3 className="text-sm font-bold text-[#11110f] leading-snug">
-                Software Developer Intern
-              </h3>
-              <p className="text-xs text-[#55554e] font-medium">
-                TruesTech IT Solution Pvt Ltd.
-              </p>
-            </div>
+            <h3 className="text-base sm:text-lg font-bold text-[#11110f] tracking-tight">
+              Software Developer Intern
+            </h3>
+            <p className="text-xs sm:text-sm text-[#55554e] font-mono mt-1">
+              TruesTech IT Solution Pvt Ltd.
+            </p>
           </div>
 
-          {/* Status 2: Real-time Location & Clock */}
-          <div className="flex items-start gap-3.5 sm:border-l sm:border-[#11110f]/10 sm:pl-6">
-            <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-600 shrink-0 mt-0.5">
-              <Clock className="w-4 h-4" />
+          {/* Item 02: Location & Live IST Telemetry */}
+          <div className="md:col-span-4 md:border-l md:border-[#11110f]/10 md:pl-8 lg:pl-12">
+            <div className="text-[11px] font-mono tracking-wider uppercase text-[#696962] mb-2 flex items-center gap-2">
+              <span className="text-[#2f5bff] font-bold">02</span>
+              <span className="opacity-40">/</span>
+              <span>Location &amp; Local Time</span>
             </div>
-            <div>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#696962] block mb-0.5">
-                Location & Time
-              </span>
-              <h3 className="text-sm font-bold text-[#11110f] leading-snug flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#696962]" />
-                New Delhi, India
-              </h3>
-              <p className="text-xs text-[#55554e] font-mono">
-                IST: <span className="font-semibold text-[#11110f]">{currentTime || "Loading..."}</span>
-              </p>
-            </div>
+            <h3 className="text-base sm:text-lg font-bold text-[#11110f] tracking-tight flex items-center gap-2">
+              <span>New Delhi, India</span>
+              <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            </h3>
+            <p className="text-xs sm:text-sm text-[#55554e] font-mono mt-1">
+              IST (UTC+5:30) · <span className="font-semibold text-[#11110f]">{currentTime || "Loading..."}</span>
+            </p>
           </div>
 
-          {/* Status 3: Availability */}
-          <div className="flex items-start gap-3.5 sm:border-l sm:border-[#11110f]/10 sm:pl-6">
-            <div className="p-2.5 rounded-xl bg-amber-500/10 text-amber-600 shrink-0 mt-0.5">
-              <Sparkles className="w-4 h-4" />
+          {/* Item 03: Status & Relocation */}
+          <div className="md:col-span-4 md:border-l md:border-[#11110f]/10 md:pl-8 lg:pl-12">
+            <div className="text-[11px] font-mono tracking-wider uppercase text-[#696962] mb-2 flex items-center gap-2">
+              <span className="text-[#2f5bff] font-bold">03</span>
+              <span className="opacity-40">/</span>
+              <span>Availability Status</span>
             </div>
-            <div>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-[#696962] block mb-0.5">
-                Status & Relocation
-              </span>
-              <h3 className="text-sm font-bold text-[#11110f] leading-snug">
-                Open to SWE Roles
-              </h3>
-              <p className="text-xs text-emerald-600 font-medium">
-                Open to Relocation & Immediate Hire
-              </p>
-            </div>
+            <h3 className="text-base sm:text-lg font-bold text-[#11110f] tracking-tight">
+              Open to Backend / SWE Roles
+            </h3>
+            <p className="text-xs sm:text-sm text-emerald-700 font-mono mt-1 font-medium">
+              Immediate Start · Open to Relocation
+            </p>
           </div>
         </motion.div>
       </div>
