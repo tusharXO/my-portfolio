@@ -1,10 +1,17 @@
 "use client";
 
 import React from "react";
-import { FEATURED_PROJECTS } from "@/data/portfolioData";
+import { FEATURED_PROJECTS, ProjectItem } from "@/data/portfolioData";
 import ProjectCard from "@/components/ProjectCard";
 
-export default function Projects() {
+interface ProjectsProps {
+  projects?: ProjectItem[];
+}
+
+export default function Projects({ projects }: ProjectsProps) {
+  const displayProjects =
+    projects && projects.length > 0 ? projects : FEATURED_PROJECTS;
+
   return (
     <section id="projects" className="py-20 border-b border-[#11110f]/10">
       <div className="page-shell">
@@ -20,7 +27,7 @@ export default function Projects() {
 
         {/* Project List */}
         <div className="space-y-10">
-          {FEATURED_PROJECTS.map((project, index) => (
+          {displayProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
