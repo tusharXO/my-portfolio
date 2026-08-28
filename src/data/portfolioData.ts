@@ -207,15 +207,15 @@ export const EXPERIENCES: ExperienceItem[] = [
 ];
 
 export const EDUCATION_LIST: EducationItem[] = [
-  {
-    id: "mca",
-    degree: "Master of Computer Applications (MCA)",
-    institution: "SGT University",
-    location: "Gurugram, HR",
-    period: "08/2025 – 08/2027",
-    status: "Available for full-time job",
-    badgeText: "Pursuing • Available Full-Time",
-  },
+  // {
+  //   id: "mca",
+  //   degree: "Master of Computer Applications (MCA)",
+  //   institution: "SGT University",
+  //   location: "Gurugram, HR",
+  //   period: "08/2025 – 08/2027",
+  //   status: "Available for full-time job",
+  //   badgeText: "Pursuing • Available Full-Time",
+  // },
   {
     id: "bca",
     degree: "Bachelor of Computer Applications (BCA)",
