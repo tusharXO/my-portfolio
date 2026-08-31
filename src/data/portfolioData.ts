@@ -70,6 +70,7 @@ export const PERSONAL_INFO = {
   fullBio:
     "Backend Developer with hands-on experience architecting low-latency microservices, monorepo codebases, and distributed systems using Node.js, Java (Spring Boot), and TypeScript. Experienced in implementing ACID-compliant transactional ledgers, atomic order pipelines, and containerized cloud deployments on AWS.",
   resumeUrl: "/Tushar_Kumar_Resume.pdf",
+  portraitUrl: "/portrait.jpeg",
 };
 
 export const METRIC_HIGHLIGHTS: MetricItem[] = [

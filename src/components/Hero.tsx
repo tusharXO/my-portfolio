@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Copy, Check } from "lucide-react";
 import confetti from "canvas-confetti";
@@ -71,18 +72,71 @@ export default function Hero() {
   return (
     <section id="hero" className="pt-32 pb-16 sm:pb-24 border-b border-[#11110f]/10">
       <div className="page-shell">
-        {/* Large Display Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold tracking-tight text-[#11110f] leading-[1.05] sm:leading-[1.02] mb-10 max-w-5xl"
-        >
-          I architect low-latency microservices{" "}
-          <span className="font-serif italic font-normal text-[#3f3f3a]">
-            and build resilient distributed systems.
-          </span>
-        </motion.h1>
+        {/* Headline + Editorial Portrait (12-col masthead) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 mb-10 items-end">
+          {/* Large Display Title — 8 cols */}
+          <div className="md:col-span-8 order-2 md:order-1">
+            {/* Eyebrow row — anchors the top of the headline column so it doesn't "float" */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-5 sm:mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-mono tracking-wider uppercase text-[#696962]"
+            >
+              <span className="text-[#2f5bff] font-bold">/</span>
+              <span>Backend · Microservices · Distributed Systems</span>
+              <span className="hidden sm:inline-block opacity-40">—</span>
+              <span className="hidden sm:inline">
+                New Delhi, IN · {currentTime || "IST"}
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-[5rem] font-bold tracking-tight text-[#11110f] leading-[1.05] sm:leading-[1.02] max-w-5xl"
+            >
+              I architect low-latency microservices{" "}
+              <span className="font-serif italic font-normal text-[#3f3f3a]">
+                and build resilient distributed systems.
+              </span>
+            </motion.h1>
+          </div>
+
+          {/* Editorial Portrait — 4 cols (above headline on mobile) */}
+          <motion.figure
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="md:col-span-4 order-1 md:order-2 group"
+          >
+            <div className="relative aspect-[4/5] rounded-xl overflow-hidden border border-[#11110f]/12 bg-white shadow-2xs">
+              {/* Top: mono masthead label echoing the 01/02/03 rail */}
+              <div className="absolute top-4 left-4 z-10 text-[10px] font-mono tracking-wider uppercase text-[#f4f3ef] flex items-center gap-1.5">
+                <span className="text-[#d9ff57] font-bold">00</span>
+                <span className="opacity-70">/</span>
+                <span>Portrait</span>
+              </div>
+              {/* Bottom: role tag — visually balances the top label and echoes the headline eyebrow */}
+              <div className="absolute bottom-4 left-4 z-10 text-[10px] font-mono tracking-wider uppercase text-[#f4f3ef]/90">
+                Software Engineer · SWE
+              </div>
+              <Image
+                src={PERSONAL_INFO.portraitUrl}
+                alt="Portrait of Tushar Kumar"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover grayscale group-hover:grayscale-0 transition-[filter] duration-500 ease-out"
+              />
+            </div>
+            <figcaption className="mt-2 text-[11px] font-mono uppercase tracking-wider text-[#696962] flex items-center justify-between">
+              <span>Tushar Kumar · New Delhi</span>
+              <span>2026</span>
+            </figcaption>
+          </motion.figure>
+        </div>
 
         {/* Two-Column Intro & Action Links */}
         <motion.div
@@ -133,8 +187,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="pt-10 border-t border-[#11110f]/10 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start"
+          className="pt-10 mt-2 sm:mt-4 border-t border-[#11110f]/10 relative grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-start"
         >
+          {/* 48px cobalt accent on the masthead hairline — ties the headline to the rail as one editorial block */}
+          <span
+            className="absolute -top-px left-0 h-px w-12 bg-[#2f5bff]"
+            aria-hidden
+          />
           {/* Item 01: Current Role */}
           <div className="md:col-span-4">
             <div className="text-[11px] font-mono tracking-wider uppercase text-[#696962] mb-2 flex items-center gap-2">
