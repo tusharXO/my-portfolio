@@ -257,8 +257,8 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
       "Swagger/OpenAPI",
       "JUnit 5",
     ],
-    githubUrl: "https://github.com/tusharXO",
-    demoUrl: "https://github.com/tusharXO",
+    githubUrl: "https://github.com/tusharXO/CreatorStore",
+    demoUrl: "https://github.com/tusharXO/CreatorStore",
   },
   {
     id: "nexus-rtc",
@@ -285,8 +285,8 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
       "WebRTC",
       "Docker",
     ],
-    githubUrl: "https://github.com/tusharXO",
-    demoUrl: "https://github.com/tusharXO",
+    githubUrl: "https://github.com/tusharXO/nexus-rtc",
+    demoUrl: "https://github.com/tusharXO/nexus-rtc",
   },
 ];
 
