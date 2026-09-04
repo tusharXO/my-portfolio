@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
 import { FileText, Menu, X, ArrowUpRight } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import { cn } from "@/lib/utils";
@@ -16,10 +16,20 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [headerVisible, setHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Smooth scroll progress: raw motion value drives the spring, spring drives
+  // the visual width — so updates from the scroll event (throttled, jumpy)
+  // are interpolated into a continuous, frame-smooth fill.
+  const scrollProgress = useMotionValue(0);
+  const smoothProgress = useSpring(scrollProgress, {
+    stiffness: 220,
+    damping: 32,
+    mass: 0.4,
+    restDelta: 0.0005,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +38,7 @@ export default function Navbar() {
         document.documentElement.scrollHeight - window.innerHeight;
 
       if (totalScrollHeight > 0) {
-        setScrollProgress(currentScrollY / totalScrollHeight);
+        scrollProgress.set(currentScrollY / totalScrollHeight);
       }
 
       setScrolled(currentScrollY > 20);
@@ -45,7 +55,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, mobileMenuOpen]);
+  }, [lastScrollY, mobileMenuOpen, scrollProgress]);
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -61,10 +71,15 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 1. Top 2px Blue Scroll Progress Indicator */}
-      <div
-        className="fixed top-0 left-0 h-[2.5px] bg-[#2f5bff] z-50 transition-all duration-75"
-        style={{ width: `${scrollProgress * 100}%` }}
+      {/* 1. Top 2px Blue Scroll Progress Indicator (spring-smoothed) */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[2.5px] origin-left bg-[#2f5bff] z-50"
+        style={{ scaleX: smoothProgress }}
+      />
+      {/* Soft leading-edge glow that follows the bar's tip */}
+      <motion.div
+        className="fixed top-0 left-0 h-[2.5px] w-24 origin-left bg-gradient-to-r from-transparent to-[#2f5bff]/40 blur-sm z-50 pointer-events-none"
+        style={{ scaleX: smoothProgress }}
       />
 
       {/* 2. Fixed Site Header */}

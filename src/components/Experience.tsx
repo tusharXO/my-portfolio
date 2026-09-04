@@ -8,7 +8,8 @@ import ExperienceCard from "@/components/ExperienceCard";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 border-b border-[#11110f]/10">
+    <section id="experience" className="relative py-20 border-b border-[#11110f]/10">
+
       <div className="page-shell">
         {/* Section Header */}
         <div className="mb-14">
@@ -35,9 +36,6 @@ export default function Experience() {
         {/* Education Credentials Grid */}
         <div id="education" className="pt-10 border-t border-[#11110f]/10">
           <div className="flex items-center gap-3 mb-8">
-            <div className="p-2.5 rounded-xl bg-[#2f5bff]/10 text-[#2f5bff]">
-              <GraduationCap className="w-5 h-5" />
-            </div>
             <div>
               <h3 className="text-2xl font-bold text-[#11110f] tracking-tight">
                 Education &amp; Academic Background

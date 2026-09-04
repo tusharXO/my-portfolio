@@ -1,14 +1,3 @@
-export interface MetricItem {
-  id: string;
-  value: string;
-  label: string;
-  sublabel: string;
-  source: string;
-  iconName: string;
-  badgeText: string;
-  accent: "emerald" | "sky" | "amber" | "indigo";
-}
-
 export interface ExperienceItem {
   id: string;
   company: string;
@@ -73,57 +62,14 @@ export const PERSONAL_INFO = {
   portraitUrl: "/portrait.jpeg",
 };
 
-export const METRIC_HIGHLIGHTS: MetricItem[] = [
-  {
-    id: "payment-throughput",
-    value: "20+ TPS",
-    label: "Concurrent Payment Transactions Processed",
-    sublabel: "Processed with AES-256 encryption, RSA signatures, and idempotent webhook listeners",
-    source: "TruesTech IT Solution",
-    iconName: "CreditCard",
-    badgeText: "High Concurrency",
-    accent: "emerald",
-  },
-  {
-    id: "api-latency",
-    value: "<20ms",
-    label: "Continuous API Latency on AWS EC2",
-    sublabel: "Achieved via PM2 process clustering, Redis microservices, and IPC coordination",
-    source: "Infrastructure Optimization",
-    iconName: "Zap",
-    badgeText: "Sub-20ms Speed",
-    accent: "sky",
-  },
-  {
-    id: "webrtc-transmissions",
-    value: "10,000+",
-    label: "Daily SDP & ICE Transmissions",
-    sublabel: "Peer-to-peer real-time video, audio, and desktop screen sharing with 60 FPS capture",
-    source: "NEXUS RTC Project",
-    iconName: "Radio",
-    badgeText: "Real-Time Systems",
-    accent: "indigo",
-  },
-  {
-    id: "active-users",
-    value: "10,000+",
-    label: "Monthly Active Users Scaled",
-    sublabel: "30% engagement lift through dynamic publication portals and automated distribution",
-    source: "Sanrachna Foundation",
-    iconName: "Users",
-    badgeText: "+30% Engagement",
-    accent: "amber",
-  },
-];
-
 export const EXPERIENCES: ExperienceItem[] = [
   {
     id: "truestech",
     company: "TruesTech IT Solution Pvt Ltd.",
-    role: "Software Developer Intern",
+    role: "Backend Software Engineer",
     period: "12/2025 – Present",
     location: "Gurugram, Haryana",
-    type: "Internship",
+    type: "Contract",
     highlightTag: "FinTech Payment Pipelines & Security",
     description:
       "Scaling core payment processing pipelines, ACID-compliant ledger persistence, and cryptographic security across cloud infrastructure.",
@@ -152,7 +98,7 @@ export const EXPERIENCES: ExperienceItem[] = [
   {
     id: "airfleet",
     company: "AirFleet Managers",
-    role: "Backend Developer Intern",
+    role: "Software Engineer Intern",
     period: "02/2025 – 08/2025",
     location: "Gurugram, Haryana",
     type: "Internship",
