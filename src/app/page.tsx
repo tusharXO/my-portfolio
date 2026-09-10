@@ -6,6 +6,7 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import ContactSection from "@/components/ContactSection";
 import { getPortfolioProjects } from "@/lib/projects-db";
+import { Analytics } from '@vercel/analytics/next';
 
 export default async function Home() {
   // Fast 10ms query to MongoDB
@@ -19,6 +20,7 @@ export default async function Home() {
       <Projects projects={projects} />
       <Skills />
       <ContactSection />
+      <Analytics />
     </main>
   );
 }
